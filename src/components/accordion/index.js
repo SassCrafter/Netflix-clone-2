@@ -4,36 +4,35 @@ import {
   Inner,
   Header,
   Body,
+  Answer,
   Title,
+  Question,
   Text,
   Icon,
-  Frame,
   Item,
 } from "./style/accordion";
 
 const ToggleContext = createContext();
 
 const Accordion = ({ children, ...restProps }) => {
+  const [toggleShowId, setToggleShowId] = useState(null);
   return (
-    <Container {...restProps}>
-      <Inner>{children}</Inner>
-    </Container>
-  );
-};
-
-Accordion.Item = function AccordionItem({ children, ...restProps }) {
-  const [toggleShow, setToggleShow] = useState(false);
-  return (
-    <ToggleContext.Provider value={{ toggleShow, setToggleShow }}>
-      <Item {...restProps}>{children}</Item>
+    <ToggleContext.Provider value={{ toggleShowId, setToggleShowId }}>
+      <Container {...restProps}>
+        <Inner>{children}</Inner>
+      </Container>
     </ToggleContext.Provider>
   );
 };
 
-Accordion.Header = function AccordionHeader({ children, ...restProps }) {
-  const { toggleShow, setToggleShow } = useContext(ToggleContext);
+Accordion.Item = function AccordionItem({ children, ...restProps }) {
+  return <Item {...restProps}>{children}</Item>;
+};
+
+Accordion.Header = function AccordionHeader({ id, children, ...restProps }) {
+  const { toggleShowId, setToggleShowId } = useContext(ToggleContext);
   const updateToggle = () => {
-    setToggleShow((toggleShow) => !toggleShow);
+    setToggleShowId(id === toggleShowId ? null : id);
   };
   return (
     <Header {...restProps} onClick={updateToggle}>
@@ -42,11 +41,12 @@ Accordion.Header = function AccordionHeader({ children, ...restProps }) {
   );
 };
 
-Accordion.Body = function AccordionBody({ children, ...restProps }) {
-  const { toggleShow } = useContext(ToggleContext);
+Accordion.Body = function AccordionBody({ id, children, ...restProps }) {
+  const { toggleShowId } = useContext(ToggleContext);
+  // return toggleShowId === id ? <Body {...restProps}>{children}</Body> : null;
   return (
-    <Body {...restProps} className={toggleShow ? "open" : ""}>
-      {children}
+    <Body {...restProps} className={toggleShowId === id ? "open" : ""}>
+      <Answer>{children}</Answer>
     </Body>
   );
 };
@@ -55,21 +55,25 @@ Accordion.Title = function AccordionTitle({ children, ...restProps }) {
   return <Title {...restProps}>{children}</Title>;
 };
 
+Accordion.Question = function AccordionQuestion({ children, ...restProps }) {
+  return <Question {...restProps}>{children}</Question>;
+};
+
 Accordion.Text = function AccordionText({ children, ...restProps }) {
   return <Text {...restProps}>{children}</Text>;
 };
 
-Accordion.Icon = function AccordionIcon({ children, ...restProps }) {
-  const { toggleShow } = useContext(ToggleContext);
+Accordion.Icon = function AccordionIcon({ id, children, ...restProps }) {
+  const { toggleShowId } = useContext(ToggleContext);
+  const iconPath = "images/icons/add.png";
   return (
-    <Icon {...restProps} className={toggleShow ? "open" : ""}>
-      +
-    </Icon>
+    <Icon
+      {...restProps}
+      src={iconPath}
+      alt="Open or close icon"
+      className={toggleShowId === id ? "open" : ""}
+    />
   );
-};
-
-Accordion.Frame = function AccordionFrame({ children, ...restProps }) {
-  return <Frame {...restProps}>{children}</Frame>;
 };
 
 export default Accordion;

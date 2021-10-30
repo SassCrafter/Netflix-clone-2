@@ -1,11 +1,11 @@
 import React from "react";
-import { Jumbotron, Footer, Accordion } from "./containers/";
+import { Jumbotron, Footer, Faq } from "./containers/";
 
 const App = () => {
   return (
     <>
-      <Accordion />
       <Jumbotron />
+      <Faq />
       <Footer />
     </>
   );
