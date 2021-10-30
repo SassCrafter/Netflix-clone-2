@@ -1,10 +1,14 @@
 import React from 'react'
+import { Header, Footer, SigninForm } from '../containers';
 
 const Signin = () => {
 	return (
-		<div>
-			Signin
-		</div>
+		<>
+			<Header>
+				<SigninForm />
+			</Header>
+			<Footer />
+		</>
 	)
 }
 

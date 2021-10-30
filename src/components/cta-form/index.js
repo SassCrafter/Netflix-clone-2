@@ -16,8 +16,8 @@ const CtaForm = ({children, ...restProps}) => {
             .required("Required"),
         })}
         onSubmit={(values, { setSubmitting }) => {
+        	console.log('Submited')
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
         }}

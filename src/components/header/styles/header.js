@@ -4,7 +4,7 @@ import Button from '../../button';
 export const Background = styled.div`
 	display: flex;
 	flex-direction: column;
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15)), url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg-1.jpg')}) top left / cover
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15)), url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover
     no-repeat;
 `;
 
