@@ -11,15 +11,17 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: anitialised;
         -moz-osx-font-smoothing: grayscale;
         background-color: black;
-        color: #333;
+        color: var(--text-color);
         font-size: 16px;
     }
 
     :root {
         --max-width: 1100px;
         --primary-color: #e50914;
+        --primary-color-hover: #f40612;
         --secondary-color: #0071eb;
         --error-color: #ffa00a;
+        --text-color: #333;
     }
 
     .mb-1 {

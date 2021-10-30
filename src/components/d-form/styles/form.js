@@ -19,33 +19,69 @@ export const Title = styled.h3`
   color: white;
 `;
 
-export const Frame = styled.div`
-  
-`;
 
-export const Group = styled.div``;
+export const Group = styled.div`
+  width: 100%;
+`;
 
 export const Label = styled.label`
-  display: none;
+  color: white;
+  display: block;
+  font-size: 14px;
+
+  ${({ type }) => type === 'float' ? `
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: font-size 0.1s ease,top 0.1s ease;
+  ` : `
+  `}
 `;
 
-
-
 export const Input = styled.input`
-  
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #383838;
+  outline: none;
+  background-color: #333;
+  color: white;
+  transition: border 200ms linear;
+  cursor: pointer;
+
+  :focus, :hover {
+    border: 1px solid var(--secondary-color) !important;
+  }
+
+  :not(:focus), :not(hover) {
+    ${({error}) => error && `
+    border-bottom: 2px solid var(--error-color)
+  `}
+  }
+`;
+
+export const InputContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
 `;
 
 export const Error = styled.span`
   color: var(--error-color);
   font-size: 15px;
   margin-top: 5px;
-  display: inline-block;
+  display: block;
 `;
 
-export const Submit = styled(Button)`
-`;
-
+export const Submit = styled(Button)``;
 
 export const InputPlacement = styled.div`
-  
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  :focus-within ${Label}, input:valid ${Label} {
+    top: 10px;
+    font-size: 13px;
+  }
 `;

@@ -1,7 +1,6 @@
 import React from "react";
 import { Accordion, CtaForm, Section } from "../components";
 import accordionData from "../fixtures/faqs.json";
-// import * as Yup from "yup";
 
 const FaqContainer = () => {
   return (

@@ -9,8 +9,13 @@ export const ButtonEl = styled.button.attrs((props) => ({
   text-align: center;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: var(--primary-color);
-  color: white;
   font-size: ${(props) => props.size};
   padding: 10px;
+  background-color: ${({btnStyle}) => btnStyle.bg};
+  color: ${({btnStyle}) => btnStyle.color};
+  cursor: pointer;
+
+  :hover {
+    background-color: ${({btnStyle}) => btnStyle.hover};
+  }
 `;

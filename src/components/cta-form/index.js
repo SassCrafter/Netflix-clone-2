@@ -24,8 +24,11 @@ const CtaForm = ({children, ...restProps}) => {
 		>
 			<Form.Title>Ready to watch? Enter your email to create or restart your membership</Form.Title>
 			<CtaFormGroup>
-				<Form.TextField label='Email' type="email" name="email" id="email" />
-				<CtaFormSubmit>Get Started</CtaFormSubmit>
+				<Form.Group>
+					<Form.Input id='email' required type='email' name='email' placeholder="Email address"
+					 />
+				</Form.Group>
+				<CtaFormSubmit size='xl' >Get Started</CtaFormSubmit>
 			</CtaFormGroup>
 		</Form>
 	)
