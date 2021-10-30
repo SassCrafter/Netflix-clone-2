@@ -70,7 +70,7 @@ export const Error = styled.span`
   color: var(--error-color);
   font-size: 15px;
   margin-top: 5px;
-  display: block;
+  display: inline-block;
 `;
 
 export const Submit = styled(Button)``;

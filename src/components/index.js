@@ -5,3 +5,5 @@ export { default as Form } from "./d-form";
 export { default as CtaForm } from './cta-form';
 export { default as Button } from "./button";
 export { default as Section } from "./section";
+export { default as Header } from './header';
+export { default as Feature } from './feature';

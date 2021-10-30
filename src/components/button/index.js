@@ -1,7 +1,7 @@
 import React from "react";
-import { ButtonEl } from "./style/button";
+import { ButtonEl, LinkEl } from "./style/button";
 
-const Button = ({ children, size = "s", btnStyle='primary', ...restProps }) => {
+const Button = ({ children, link = false, size = "s", btnStyle='primary', ...restProps }) => {
   const sizes = {
     s: "16px",
     m: "18px",
@@ -16,12 +16,12 @@ const Button = ({ children, size = "s", btnStyle='primary', ...restProps }) => {
       hover: 'var(--primary-color-hover)'
     },
   }
-  
-  return (
-    <ButtonEl size={sizes[size]} btnStyle={styles[btnStyle]} {...restProps}>
-      {children}
-    </ButtonEl>
-  );
+
+  const button = <ButtonEl size={sizes[size]} $btnStyle={styles[btnStyle]} {...restProps}>{children}</ButtonEl>;
+  const linkEl = <LinkEl size={sizes[size]} $btnStyle={styles[btnStyle]} {...restProps}>{children}</LinkEl>;
+
+
+  return link ? linkEl : button;
 };
 
 export default Button;
